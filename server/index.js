@@ -10,14 +10,13 @@ var io = require('socket.io')(server);
 //le decimos a express que esa sera la carpeta de file static
 app.use(express.static('client'));
 
-//creamos una ruta por default
-app.get('/', function(req, res){
-  res.send('<h1>Hola Mundo!</h1>');
-});
 
 //integramos socket.io
 io.on('connection', function(socket){
-  console.log('El usuario con IP '+ socket.handshake.address + 'esta conectado');
+  console.log('El usuario con IP '+ socket.handshake.address + ' esta conectado');
+  socket.on('disconnect', function(){
+    console.log('usuario se desconecto');
+  });
 });
 
 //corremos el servidor
