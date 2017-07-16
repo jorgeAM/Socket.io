@@ -16,7 +16,10 @@ io.on('connection', function(socket){
   console.log('El usuario con IP '+ socket.handshake.address + ' esta conectado');
   //tiene que tener el nombre que pasamos en el emit
   socket.on('chat message', (msg)=>{
-  	console.log('message: '+msg);
+  	//imprimimos en consola
+  	//console.log('message: '+msg);
+  	//se lo enviamos a todos los usuarios
+  	io.emit('chat message', msg);
   })
   socket.on('disconnect', function(){
     console.log('usuario se desconecto');

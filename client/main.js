@@ -5,4 +5,9 @@ $(function () {
       $('#m').val('');
       return false;
     });
+    //mostramos lo que escribimos en el panel
+    socket.on('chat message', function(msg){
+    	$('#messages').append($('<li>').text(msg));
+    	window.scrollTo(0, document.body.scrollHeight);
+    });
   });
