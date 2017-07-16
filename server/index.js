@@ -12,6 +12,11 @@ app.get('/', function(req, res){
   res.send('<h1>Hola Mundo!</h1>');
 });
 
+//integramos socket.io
+io.on('connection', function(socket){
+  console.log('El usuario con IP '+ socket.handshake.address + 'esta conectado');
+});
+
 //corremos el servidor
 server.listen(3030, function(){
   console.log('listening on *:3030');
