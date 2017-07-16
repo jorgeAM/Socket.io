@@ -14,6 +14,10 @@ app.use(express.static('client'));
 //integramos socket.io
 io.on('connection', function(socket){
   console.log('El usuario con IP '+ socket.handshake.address + ' esta conectado');
+  //tiene que tener el nombre que pasamos en el emit
+  socket.on('chat message', (msg)=>{
+  	console.log('message: '+msg);
+  })
   socket.on('disconnect', function(){
     console.log('usuario se desconecto');
   });
